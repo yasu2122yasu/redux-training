@@ -1,27 +1,21 @@
 import React from 'react';
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { increaseCount, decreaseCount } from './store/index'; // ここを追加
+import { increment, decrement, login } from './actions';
 
 function App() {
-  // useSelector フックを使用して Redux の状態にアクセス
-  const count = useSelector((state) => state.count.count);
+  const counter = useSelector((state) => state.counter);
+  const isLogin = useSelector((state) => state.isLogin);
   const dispatch = useDispatch();
-  const increase = () => {
-    dispatch(increaseCount());
-  };
-  const decrease = () => {
-    dispatch(decreaseCount());
-  };
-
-  console.log(count);
 
   return (
     <div className="App">
-      <h1>Redux Learn</h1>
-      <p>Count: {count}</p>
-      <button onClick={increase}>Up</button>
-      <button onClick={decrease}>Down</button>
+      <h1>Hello world</h1>
+      <h3>Counter: {counter}</h3>
+      <button onClick={() => dispatch(increment(7))}>+</button>
+      <button onClick={() => dispatch(decrement())}>-</button>
+      {isLogin ? <h3>ログインに成功した</h3> : <h3>ログインしてください</h3>}
+      <button onClick={() => dispatch(login())}>ログインorログアウト</button>
     </div>
   );
 }
