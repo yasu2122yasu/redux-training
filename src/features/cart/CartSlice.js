@@ -10,7 +10,16 @@ const initialState = {
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
-  reducers: {},
+  reducers: {
+    // clearCartはActionの名前
+    clearCart: (state) => {
+      return { cartItems: [], amount: 0, total: 0 };
+    },
+  },
 });
 
+console.log(cartSlice);
+
+// ここでdispatchのためにexportをしている。
+export const { clearCart } = cartSlice.actions;
 export default cartSlice.reducer;
