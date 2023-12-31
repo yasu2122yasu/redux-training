@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CartItem from './CartItem';
-import { clearCart } from '../features/cart/CartSlice';
+// import { clearCart } from '../features/cart/CartSlice';
+import { openModal } from '../features/modal/modalSlice';
 
 const CartContainer = () => {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ const CartContainer = () => {
           </h4>
         </div>
         {/* onClickButtonで全削除のdisptachを出している */}
-        <button className="btn clear-btn" onClick={() => dispatch(clearCart())}>
+        <button className="btn clear-btn" onClick={() => dispatch(openModal())}>
           全削除
         </button>
       </footer>

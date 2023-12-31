@@ -26,8 +26,6 @@ const cartSlice = createSlice({
     },
     removeItem: (state, action) => {
       console.log(action);
-      // 個別itemを削除するために、filterを使う（reducerの中身）
-      // payloadはデータのことで、CartItemでidやtitleなどを指定している
       const itemId = action.payload;
       // fileterは条件式がtrueのものだけを返す。選択した商品以外をかえす
       state.cartItems = state.cartItems.filter((item) => item.id !== itemId);
